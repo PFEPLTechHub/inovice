@@ -1,0 +1,87 @@
+/* CSS styles for Invoice Management System */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+.nav-tabs .nav-link.active {
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+}
+
+.btn-primary {
+    background-color: #2196F3;
+}
+
+/* Add this to your styles.css file */
+
+/* Row status styling */
+.table-warning td:last-child {
+    color: #856404;
+    font-weight: bold;
+}
+
+.table-success td:last-child {
+    color: #155724;
+    font-weight: bold;
+}
+
+/* Make the status column wider */
+#data .table th:last-child,
+#data .table td:last-child {
+    min-width: 200px;
+    max-width: 300px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Summary styling */
+#validation-summary {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Upload button styling */
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}

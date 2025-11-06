@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Invoice Table</title>
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../static/css/invoice_main_page.css" />
+    <style>
+       body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: #343a40;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 1rem;
+      }
+
+      .menu-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #212529;
+        color: white;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 999;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar a {
+        padding: 10px 20px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      .sidebar a:hover {
+        background-color: #495057;
+      }
+
+      .submenu {
+        padding-left: 20px;
+        font-size: 0.9rem;
+      }
+
+      .content {
+        margin-left: 0;
+        transition: margin-left 0.3s;
+        padding: 1rem;
+      }
+
+      .content.shifted {
+        margin-left: 250px;
+      }
+      .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+.sidebar a.active {
+  background-color: #495057;
+  font-weight: bold;
+}
+.not-approved-row {
+  background-color: #fff3cd; /* Light yellow background */
+}
+    </style>
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="/admin_homepage" class="sidebar-link"><i class="bi bi-house"></i> Home</a>
+    <a href="/history_homepage" class="sidebar-link"><i class="bi bi-clock-history"></i> History</a>
+    
+    <!-- Main section -->
+    <a href="#" class="sidebar-link"><i class="bi bi-kanban"></i> Projects</a>
+    <div class="submenu">
+      <a href="/project_table" class="sidebar-link">➤ View Projects</a>
+      <a href="/project_add" class="sidebar-link">➤ Add Projects</a>
+    </div>
+    
+    
+    <a href="/register_page" class="sidebar-link"><i class="bi bi-person-plus"></i> New User Register</a>
+    <a href="/invoice_main_page" class="sidebar-link"><i class="bi bi-receipt"></i> Invoice</a>
+    <!-- <a href="/user_information" class="sidebar-link"><i class="bi bi-person"></i> User Information</a> -->
+    <a href="/manager_page" class="sidebar-link"><i class="bi bi-people"></i> Manager with Employee</a>
+    <a href="/bulk_upload" class="sidebar-link"><i class="bi bi-upload"></i> Bulk Upload</a>
+    
+    <a href="#" class="sidebar-link"><i class="bi bi-file-earmark-bar-graph"></i> Reports</a>
+    <div class="submenu">
+      <a href="/employee_payment_report" class="sidebar-link">➤ Employee Payment</a>
+      <a href="/report" class="sidebar-link">➤ Site Report</a>
+    </div>
+    
+    
+    </div>
+    
+    
+        <!-- Navbar -->
+        <nav class="navbar">
+          <span class="menu-icon" onclick="toggleSidebar()"><i class="bi bi-list"></i></span>
+          <div class="nav-logo"><i class="bi bi-receipt"></i> Invoice</div>
+          <div class="nav-links">
+            <a href="javascript:void(0);" onclick="logout()"
+              ><i class="bi bi-box-arrow-right"></i> Log Out</a
+            >
+          </div>
+        </nav>
+    
+        <!-- Main Content -->
+        <div id="mainContent" class="content">
+        </br>
+
+    <!-- Form Starts Here -->
+    <form id="invoiceForm" action="/submit_invoice" method="POST">
+<div class="input-container">
+  <input id="invoice_main_month" type="month" name="invoice_main_month" />
+  <button id="toggleArrearsBtn" type="button">
+    <i class="bi bi-eye"></i> Show/Hide Arrears
+  </button>
+  <div class="submit-container">
+    <button type="submit">
+      <i class="bi bi-send"></i> Generate Invoice
+    </button>
+  </div>
+  <div class="search-container">
+    <input type="text" id="invoiceSearchInput" class="form-control" placeholder="Search invoices...">
+  </div>
+</div>
+      <div class="table-container">
+        <table id="invoiceTable">
+          <thead>
+            <tr></tr>
+            <tr>
+              <th id="selectAllHeader"><input type="checkbox" id="selectAllCheckbox" title="Select All"></th>
+              <th>Serial No.</th>
+              <th>Name</th>
+              <th>Invoice No</th>
+              <th>Payable Days</th>
+              <!-- <th>Food Allowance Days</th> -->
+              <th class="arrears">Arrears Month</th>
+              <th class="arrears">Arrears Payable Days</th>
+              <th class="arrears">Arrears Amount</th>
+              <th>Food Amount Salary</th>
+              <th>Monthly Calculated Salary</th>
+              <th>Total Calculated Salary</th>
+              <th class="manager-buttons">Project</th>
+              <th class="manager-button">
+                Remarks
+              </th>
+              <th class="manager-button">Manager</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </form>
+    
+    <script src="../static/js/invoice_main_page.js"></script>
+    <script src="../static/js/others.js"></script>
+
+    <div id="toastContainer"></div>
+    <div id="toastContainers"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/get_user_role")
+          .then((response) => response.json())
+          .then((data) => {
+            const userRole = data.role;
+    
+            if (userRole === 0) {
+              // Show only /invoice_main_page, /user_information, and /history_homepage for managers
+              document.querySelectorAll(".sidebar-link").forEach((link) => {
+                const href = link.getAttribute("href");
+                if (href !== "/invoice_main_page" && href !== "/user_information" && href !== "/history_homepage") {
+                  link.style.display = "none";
+                }
+              });
+    
+              // Optionally hide all submenus
+              document.querySelectorAll(".submenu").forEach((submenu) => {
+                submenu.style.display = "none";
+              });
+            }
+          })
+          .catch((error) => console.error("Failed to fetch user role:", error));
+      });
+    </script>
+    
+  </body>
+</html>

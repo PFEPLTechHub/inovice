@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../static/CSS/loginForm.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>LOGIN PAGE</h2>
+      <div class="header">
+        <img
+          src="../static/Images/loginheader.png"
+          alt="login header"
+          class="header-image"
+        />
+      </div>
+      <div class="login-form">
+        <form id="loginForm" onsubmit="event.preventDefault(); login();">
+          <div class="input-with-icon">
+            <span class="icon">
+              <img
+                src="../static/Images/username_logo.png"
+                alt="Username Icon"
+              />
+            </span>
+            <input
+              type="text"
+              id="user_id"
+              name="user_id"
+              placeholder="user_id"
+              required
+            />
+          </div>
+          <div class="input-with-icon">
+            <span class="icon">
+              <img
+                src="../static/Images/password_icon.png"
+                alt="Password Icon"
+              />
+            </span>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+    </div>
+    <div class="image-container">
+      <img src="../static/Images/logo.png" alt="PFEPL Logo" />
+    </div>
+
+    <script src="../static/js/loginForm.js"></script>
+    <!-- <script src="../static/JS/login.js"></script> -->
+  </body>
+</html>

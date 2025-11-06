@@ -1,0 +1,392 @@
+<!-- templates/report.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Payment Report</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Add SheetJS for Excel export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+      .report-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .date-pickers {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+        align-items: center;
+      }
+      .picker-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .date-input {
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        width: 200px;
+        cursor: pointer;
+        background-color: #fff;
+      }
+
+      /* Month picker styles */
+      .month-year-picker {
+        display: none;
+        position: absolute;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        width: 300px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        background-color: #fff;
+      }
+      .year-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f8f9fa;
+        padding: 8px 12px;
+        border-bottom: 1px solid #dee2e6;
+      }
+      .year-controls {
+        display: flex;
+        align-items: center;
+      }
+      .prev-year,
+      .next-year {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+      .year-display {
+        font-weight: bold;
+        margin: 0 10px;
+        min-width: 60px;
+        text-align: center;
+      }
+      .month-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 5px;
+      }
+      .month-btn {
+        padding: 10px 5px;
+        text-align: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        margin: 2px;
+      }
+      .month-btn:hover {
+        background-color: #e9ecef;
+      }
+      .month-btn.active {
+        background-color: #0d6efd;
+        color: white;
+      }
+
+      .chart-container {
+        height: 400px;
+        margin-top: 30px;
+      }
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      #loading-indicator {
+        display: none;
+      }
+      .date-picker-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .picker-container {
+        position: relative;
+      }
+      @media (max-width: 768px) {
+        .date-pickers {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: #343a40;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 1rem;
+      }
+
+      .menu-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #212529;
+        color: white;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 999;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar a {
+        padding: 10px 20px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      .sidebar a:hover {
+        background-color: #495057;
+      }
+
+      .submenu {
+        padding-left: 20px;
+        font-size: 0.9rem;
+      }
+
+      .content {
+        margin-left: 0;
+        transition: margin-left 0.3s;
+        padding: 1rem;
+      }
+
+      .content.shifted {
+        margin-left: 250px;
+      }
+      .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+.sidebar a.active {
+  background-color: #495057;
+  font-weight: bold;
+}
+    </style>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+        <link rel="stylesheet" href="../static/css/report.css" />
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="/admin_homepage" class="sidebar-link"><i class="bi bi-house"></i> Home</a>
+    <a href="/history_homepage" class="sidebar-link"><i class="bi bi-clock-history"></i> History</a>
+    
+    <!-- Main section -->
+    <a href="#" class="sidebar-link"><i class="bi bi-kanban"></i> Projects</a>
+    <div class="submenu">
+      <a href="/project_table" class="sidebar-link">➤ View Projects</a>
+      <a href="/project_add" class="sidebar-link">➤ Add Projects</a>
+    </div>
+    
+    
+    <a href="/register_page" class="sidebar-link"><i class="bi bi-person-plus"></i> New User Register</a>
+    <a href="/invoice_main_page" class="sidebar-link"><i class="bi bi-receipt"></i> Invoice</a>
+    <a href="/manager_page" class="sidebar-link"><i class="bi bi-people"></i> Manager with Employee</a>
+    <a href="/bulk_upload" class="sidebar-link"><i class="bi bi-upload"></i> Bulk Upload</a>
+    
+    <a href="#" class="sidebar-link"><i class="bi bi-file-earmark-bar-graph"></i> Reports</a>
+    <div class="submenu">
+      <a href="/employee_payment_report" class="sidebar-link">➤ Employee Payment</a>
+      <a href="/report" class="sidebar-link">➤ Site Report</a>
+    </div>
+    
+    
+    </div>
+    
+    
+        <!-- Navbar -->
+        <nav class="navbar">
+          <span class="menu-icon" onclick="toggleSidebar()"><i class="bi bi-list"></i></span>
+          <div class="nav-logo"><i class="bi bi-kanban"></i> Site Report</div>
+          <div class="nav-links">
+            <a href="javascript:void(0);" onclick="logout()"
+              ><i class="bi bi-box-arrow-right"></i> Log Out</a
+            >
+          </div>
+        </nav>
+    
+        <!-- Main Content -->
+        <div id="mainContent" class="content">
+        </br>
+    
+    <div class="report-container">
+      <!-- <h1 class="mb-4">Employee Payment Report</h1> -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Select Date Range</h5>
+          <div class="date-pickers">
+            <div class="picker-group">
+              <div class="date-picker-label">Start Month & Year:</div>
+              <div class="picker-container">
+                <input
+                  type="text"
+                  id="start-date-display"
+                  class="date-input"
+                  readonly
+                  value="04/2025"
+                />
+                <div id="start-date-container" class="month-year-picker">
+                  <div class="year-header">
+                    <button class="prev-year">&laquo;</button>
+                    <div class="year-display">2025</div>
+                    <button class="next-year">&raquo;</button>
+                  </div>
+                  <div class="month-grid">
+                    <button class="month-btn">Jan</button>
+                    <button class="month-btn">Feb</button>
+                    <button class="month-btn">Mar</button>
+                    <button class="month-btn active">Apr</button>
+                    <button class="month-btn">May</button>
+                    <button class="month-btn">Jun</button>
+                    <button class="month-btn">Jul</button>
+                    <button class="month-btn">Aug</button>
+                    <button class="month-btn">Sep</button>
+                    <button class="month-btn">Oct</button>
+                    <button class="month-btn">Nov</button>
+                    <button class="month-btn">Dec</button>
+                  </div>
+                </div>
+                <input type="hidden" id="start-month" value="4" />
+                <input type="hidden" id="start-year" value="2025" />
+              </div>
+            </div>
+
+            <div class="picker-group">
+              <div class="date-picker-label">End Month & Year:</div>
+              <div class="picker-container">
+                <input
+                  type="text"
+                  id="end-date-display"
+                  class="date-input"
+                  readonly
+                  value="04/2025"
+                />
+                <div id="end-date-container" class="month-year-picker">
+                  <div class="year-header">
+                    <button class="prev-year">&laquo;</button>
+                    <div class="year-display">2025</div>
+                    <button class="next-year">&raquo;</button>
+                  </div>
+                  <div class="month-grid">
+                    <button class="month-btn">Jan</button>
+                    <button class="month-btn">Feb</button>
+                    <button class="month-btn">Mar</button>
+                    <button class="month-btn active">Apr</button>
+                    <button class="month-btn">May</button>
+                    <button class="month-btn">Jun</button>
+                    <button class="month-btn">Jul</button>
+                    <button class="month-btn">Aug</button>
+                    <button class="month-btn">Sep</button>
+                    <button class="month-btn">Oct</button>
+                    <button class="month-btn">Nov</button>
+                    <button class="month-btn">Dec</button>
+                  </div>
+                </div>
+                <input type="hidden" id="end-month" value="4" />
+                <input type="hidden" id="end-year" value="2025" />
+              </div>
+            </div>
+
+            <div class="action-buttons" >
+              <button id="generate-report" class="btn btn-primary mt-4">
+                Generate Report
+              </button>
+              <button id="export-excel" class="btn btn-success mt-4" disabled>
+                Export to Excel
+              </button>
+              
+              <div
+                id="loading-indicator"
+                class="spinner-border text-primary"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Site Report</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead id="report-table-head">
+                <!-- Will be dynamically populated by JS -->
+              </thead>
+              <tbody id="report-table-body">
+                <!-- Will be dynamically populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Site Report</h5>
+          <div class="chart-container">
+            <canvas id="costChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+    <script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+  </body>
+</html>

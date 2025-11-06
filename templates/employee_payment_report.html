@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Payment Report</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    />
+    <style>
+      .report-container {
+        margin: 30px;
+      }
+      .date-picker-container {
+        margin-bottom: 20px;
+      }
+      .table-responsive {
+        margin-top: 20px;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: #343a40;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 1rem;
+      }
+
+      .menu-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #212529;
+        color: white;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 999;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar a {
+        padding: 10px 20px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      .sidebar a:hover {
+        background-color: #495057;
+      }
+
+      .submenu {
+        padding-left: 20px;
+        font-size: 0.9rem;
+      }
+
+      .content {
+        margin-left: 0;
+        transition: margin-left 0.3s;
+        padding: 1rem;
+      }
+
+      .content.shifted {
+        margin-left: 250px;
+      }
+      .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+.sidebar a.active {
+  background-color: #495057;
+  font-weight: bold;
+}
+    </style>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  />
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="/admin_homepage" class="sidebar-link"><i class="bi bi-house"></i> Home</a>
+    <a href="/history_homepage" class="sidebar-link"><i class="bi bi-clock-history"></i> History</a>
+    
+    <!-- Main section -->
+    <a href="#" class="sidebar-link"><i class="bi bi-kanban"></i> Projects</a>
+    <div class="submenu">
+      <a href="/project_table" class="sidebar-link">➤ View Projects</a>
+      <a href="/project_add" class="sidebar-link">➤ Add Projects</a>
+    </div>
+    
+    
+    <a href="/register_page" class="sidebar-link"><i class="bi bi-person-plus"></i> New User Register</a>
+    <a href="/invoice_main_page" class="sidebar-link"><i class="bi bi-receipt"></i> Invoice</a>
+    <a href="/manager_page" class="sidebar-link"><i class="bi bi-people"></i> Manager with Employee</a>
+    <a href="/bulk_upload" class="sidebar-link"><i class="bi bi-upload"></i> Bulk Upload</a>
+    
+    <a href="#" class="sidebar-link"><i class="bi bi-file-earmark-bar-graph"></i> Reports</a>
+    <div class="submenu">
+      <a href="/employee_payment_report" class="sidebar-link">➤ Employee Payment</a>
+      <a href="/report" class="sidebar-link">➤ Site Report</a>
+    </div>
+    
+    
+    </div>
+    
+    
+        <!-- Navbar -->
+        <nav class="navbar">
+          <span class="menu-icon" onclick="toggleSidebar()"><i class="bi bi-list"></i></span>
+          <div class="nav-logo"><i class="bi bi-people"></i> Employee Payment Report</div>
+          <div class="nav-links">
+            <a href="javascript:void(0);" onclick="logout()"
+              ><i class="bi bi-box-arrow-right"></i> Log Out</a
+            >
+          </div>
+        </nav>
+    
+        <!-- Main Content -->
+        <div id="mainContent" class="content">
+        </br>
+    
+    
+    <div class="container report-container">
+      
+
+      <div class="row date-picker-container">
+        <div class="col-md-3">
+          <label for="start-month-picker" class="form-label"
+            >Start Month & Year:</label
+          >
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="start-month-picker"
+              placeholder="MM/YYYY"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="end-month-picker" class="form-label"
+            >End Month & Year:</label
+          >
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="end-month-picker"
+              placeholder="MM/YYYY"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button type="button" id="generate-report" class="btn btn-primary">
+            Generate Report
+          </button>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button type="button" id="export-excel" class="btn btn-success">
+            Export to Excel
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="report-table">
+          <thead class="table-dark">
+            <tr>
+              <th>Month</th>
+              <th>Employee Name</th>
+              <th>Payable Days</th>
+              <th>Food Allowance Amount</th>
+              <th>Site (Project Name)</th>
+              <th>Invoice No</th>
+              <th>Total Payable</th>
+              <th>Total Food</th>
+              <th>Arrears Payable Days</th>
+              <th>Total Amount</th>
+              <th>Manager Name</th>
+            </tr>
+          </thead>
+          <tbody id="report-data">
+            <!-- Data will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="/static/js/report.js"></script>
+  </body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Register Page</title>
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <!-- Google Material Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/register_page.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: #343a40;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 1rem;
+      }
+
+      .menu-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #212529;
+        color: white;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 999;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar a {
+        padding: 10px 20px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      .sidebar a:hover {
+        background-color: #495057;
+      }
+
+      .submenu {
+        padding-left: 20px;
+        font-size: 0.9rem;
+      }
+
+      .content {
+        margin-left: 0;
+        transition: margin-left 0.3s;
+        padding: 1rem;
+      }
+
+      .content.shifted {
+        margin-left: 250px;
+      }
+      .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+.sidebar a.active {
+  background-color: #495057;
+  font-weight: bold;
+}
+    </style>
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="/admin_homepage" class="sidebar-link"><i class="bi bi-house"></i> Home</a>
+    <a href="/history_homepage" class="sidebar-link"><i class="bi bi-clock-history"></i> History</a>
+    
+    <!-- Main section -->
+    <a href="#" class="sidebar-link"><i class="bi bi-kanban"></i> Projects</a>
+    <div class="submenu">
+      <a href="/project_table" class="sidebar-link">➤ View Projects</a>
+      <a href="/project_add" class="sidebar-link">➤ Add Projects</a>
+    </div>
+    
+    
+    <a href="/register_page" class="sidebar-link"><i class="bi bi-person-plus"></i> New User Register</a>
+    <a href="/invoice_main_page" class="sidebar-link"><i class="bi bi-receipt"></i> Invoice</a>
+    <a href="/manager_page" class="sidebar-link"><i class="bi bi-people"></i> Manager with Employee</a>
+    <a href="/bulk_upload" class="sidebar-link"><i class="bi bi-upload"></i> Bulk Upload</a>
+    
+    <a href="#" class="sidebar-link"><i class="bi bi-file-earmark-bar-graph"></i> Reports</a>
+    <div class="submenu">
+      <a href="/employee_payment_report" class="sidebar-link">➤ Employee Payment</a>
+      <a href="/report" class="sidebar-link">➤ Site Report</a>
+    </div>
+    
+    
+    </div>
+    
+    
+        <!-- Navbar -->
+        <nav class="navbar">
+          <span class="menu-icon" onclick="toggleSidebar()"><i class="bi bi-list"></i></span>
+          <div class="nav-logo"><i class="bi bi-person-plus"></i> New User Registration</div>
+          <div class="nav-links">
+            <a href="javascript:void(0);" onclick="logout()"
+              ><i class="bi bi-box-arrow-right"></i> Log Out</a
+            >
+          </div>
+        </nav>
+    
+        <!-- Main Content -->
+        <div id="mainContent" class="content">
+        </br>
+
+
+    <!-- Registration Form -->
+    <div class="form-container">
+      <form id="registerForm" action="/register" method="POST">
+        <div class="form-group">
+          <label>Employee Name:</label>
+          <input
+            type="text"
+            name="employee_name"
+          />
+        </div>
+        <div class="form-group">
+          <label>Employee Address:</label>
+          <input
+            type="text"
+            name="employee_address"
+            row="3"
+          />
+        </div>
+        <div class="form-group">
+          <label>Pin Code:</label>
+          <input
+            type="text"
+            name="employee_pincode"
+          />
+        </div>
+        <div class="form-group">
+          <label>PAN No:</label>
+          <input
+            type="text"
+            name="pan_no"
+          />
+        </div>
+        <div class="form-group">
+          <label>Account Number:</label>
+          <input
+            type="text"
+            name="account_number"
+          />
+        </div>
+        <div class="form-group">
+          <label>Bank Name:</label>
+          <input
+            type="text"
+            name="bank_name"
+          />
+        </div>
+        <div class="form-group">
+          <label>IFSC Code:</label>
+          <input
+            type="text"
+            name="ifsc_code"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Project Name:</label>
+          <select name="project_name">
+            <option value="">Loading...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Manager Name:</label>
+          <select name="manager_name">
+            <option value="">Loading...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Company Name (optional, overrides project):</label>
+          <input
+            type="text"
+            name="company_name"
+            placeholder="Leave empty to use project's company"
+          />
+        </div>
+        <div class="form-group">
+          <label>Monthly Salary:</label>
+          <input
+            type="number"
+            name="monthly_salary"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Food Allowance Per Day Amount:</label>
+          <input
+            type="number"
+            name="food_allowance_per_day_amount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Last Invoice No:</label>
+          <input
+            type="text"
+            name="last_invoice_no"
+          />
+        </div>
+        <div class="form-group">
+          <label>Phone No:</label>
+          <input
+            type="number"
+            name="phone_no"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Email ID:</label>
+          <input
+            type="email"
+            name="mailid"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Gender:</label>
+          <select name="gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Template No:</label>
+          <select name="template_no">
+            <option value="">Select</option>
+            <option value="temp1">temp1</option>
+            <option value="temp2">temp2</option>
+            <option value="temp3">temp3</option>
+            <option value="temp4">temp4</option>
+            <option value="temp5">temp5</option>
+            <option value="temp6">temp6</option>
+            <option value="temp7">temp7</option>
+            <option value="temp8">temp8</option>
+            <option value="temp9">temp9</option>
+            <option value="temp10">temp10</option>
+            <option value="temp11">temp11</option>
+            <option value="temp12">temp12</option>
+            <option value="temp13">temp13</option>
+            <option value="temp14">temp14</option>
+            <option value="temp15">temp15</option>
+            <option value="temp16">temp16</option>
+            <option value="temp17">temp17</option>
+            <option value="temp18">temp18</option>
+            <option value="temp19">temp19</option>
+            <option value="temp20">temp20</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Joining Date:</label>
+          <input
+            type="date"
+            name="joining_date"
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const content = document.getElementById("mainContent");
+        sidebar.classList.toggle("open");
+        content.classList.toggle("shifted");
+      }
+    
+      function logout() {
+        alert("Logging out...");
+      }
+    
+      // Highlight active sidebar link
+      window.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".sidebar-link");
+  const currentPath = window.location.pathname;
+  
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+  
+    // Exact match
+    if (href === currentPath) {
+      link.classList.add("active");
+  
+      // Highlight parent section (for submenu items)
+      const parent = link.closest(".submenu");
+      if (parent) {
+        const parentLink = parent.previousElementSibling;
+        if (parentLink && parentLink.classList.contains("sidebar-link")) {
+          parentLink.classList.add("active");
+        }
+      }
+    }
+  });
+  });
+  
+    </script>
+    <script src="../static/js/register_page.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+  </body>
+</html>

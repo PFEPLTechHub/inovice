@@ -1,0 +1,343 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343a40; /* Dark grey background */
+    padding: 15px 30px;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 15px;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  #toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .toast {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideIn 0.3s forwards;
+  }
+  
+  .toast .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  /* Minimalist Grey Color Palette */
+  :root {
+    --primary-color: #6c757d; /* Medium Grey */
+    --background-color: #f8f9fa; /* Light Grey */
+    --text-color: #343a40; /* Dark Grey */
+    --form-background: #ffffff; /* White */
+    --hover-color: #495057; /* Darker Grey */
+  }
+  
+  /* Global Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    font-size: 12px;
+  }
+  
+  /* Heading */
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--hover-color);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    #dataTable th,
+    #dataTable td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    #dataTable th,
+    #dataTable td {
+      font-size: 12px;
+      padding: 6px;
+    }
+  }
+  
+  /* Specific Button Classes */
+  .editBtn,
+  .updateBtn,
+  .cancelBtn,
+  .deleteBtn {
+    width: auto; /* Auto width based on content */
+    height: auto; /* Auto height based on content */
+    font-size: 12px; /* Smaller font size */
+    padding: 4px 8px; /* Reduced padding */
+    margin-right: 5px; /* Space between buttons */
+  }
+  
+  /* Make the buttons appear in one line */
+  td button {
+    display: inline-block; /* Ensures buttons are on the same line */
+    margin-right: 5px; /* Space between buttons */
+    padding: 5px 10px; /* Adjust padding as needed for size */
+    font-size: 12px; /* Adjust font size */
+    border-radius: 5px; /* Rounded corners */
+  }
+  .table-container {
+    width: 100%; /* Full width */
+    max-width: 100vw; /* Ensures it doesn't exceed screen width */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    overflow-y: auto; /* Enables vertical scrolling */
+    height: 600px;
+    max-height: 600px; /* Adjust based on available screen height */
+    border: 1px solid #ddd; /* Optional: Border for clarity */
+    border-radius: 10px;
+  }
+  
+  .table-wrapper {
+    min-width: 1200px; /* Ensures columns have more space */
+  }
+  
+  #dataTable th,
+  #dataTable td {
+    padding: 8px 12px; /* Adjust spacing inside cells */
+    text-align: center;
+    border: 1px solid #ccc; /* Adds a border to cells */
+    border-radius: 10 px;
+  }
+  
+  /* Adjust specific column widths */
+  #dataTable th,
+  #dataTable td {
+    min-width: 120px; /* Increase column width */
+  }
+  
+  #dataTable th:nth-child(1),
+  #dataTable td:nth-child(1) {
+    min-width: 80px; /* Serial No */
+  }
+  
+  #dataTable th:nth-child(2),
+  #dataTable td:nth-child(2) {
+    min-width: 150px; /* Name */
+  }
+  
+  #dataTable th:nth-child(3),
+  #dataTable td:nth-child(3) {
+    min-width: 200px; /* Address */
+  }
+  
+  #dataTable th:nth-child(17),
+  #dataTable td:nth-child(17) {
+    min-width: 180px; /* Actions column */
+  }
+  
+  #dataTable th {
+    color: white;
+    background-color: #495057;
+  }
+  
+  #dataTable .odd-row {
+    background-color: #e9ecef; /* Lighter Grey */
+  }
+  
+  #dataTable input[type="text"],
+  #dataTable input[type="number"],
+  #dataTable input[type="month"] {
+    /* width: 100px;
+    height: 10px; */
+    padding: 5px;
+    font-size: 12px; /* Adjust font size */
+  }
+  
+  #dataTable label {
+    font-size: 12px; /* Adjust font size for labels */
+    padding: 5px;
+  }
+  i {
+    margin-right: 8px; /* Adjust the gap as needed */
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Button Container */
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  /* Button Styles */
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* Auto layout to adjust column width based on content */
+    border-radius: 10px;
+  }
+  
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .filter-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .filter-group select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 38px;
+    background-color: white;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .filter-group select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .clear-btn {
+    align-self: flex-end;
+    margin-top: 24px;
+    padding: 8px 15px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .clear-btn:hover {
+    background-color: #5a6268;
+  }
+  
+  .clear-btn:active {
+    background-color: #495057;
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .filter-group {
+      min-width: 100%;
+    }
+  
+    .clear-btn {
+      align-self: stretch;
+      margin-top: 10px;
+    }
+  }
+  
+  

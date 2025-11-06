@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Information</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/static//css/user_information.css" />
+    <style>
+      .navbar {
+        background-color: #343a40;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 1rem;
+      }
+
+      .menu-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #212529;
+        color: white;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 999;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+
+      .sidebar a {
+        padding: 10px 20px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      .sidebar a:hover {
+        background-color: #495057;
+      }
+
+      .submenu {
+        padding-left: 20px;
+        font-size: 0.9rem;
+      }
+
+      .content {
+        margin-left: 0;
+        transition: margin-left 0.3s;
+        padding: 1rem;
+      }
+
+      .content.shifted {
+        margin-left: 250px;
+      }
+      .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+.sidebar a.active {
+  background-color: #495057;
+  font-weight: bold;
+}
+    </style>
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+      <a href="/admin_homepage" class="sidebar-link"><i class="bi bi-house"></i> Home</a>
+    <a href="/history_homepage" class="sidebar-link"><i class="bi bi-clock-history"></i> History</a>
+    
+    <!-- Main section -->
+    <a href="#" class="sidebar-link"><i class="bi bi-kanban"></i> Projects</a>
+    <div class="submenu">
+      <a href="/project_table" class="sidebar-link">➤ View Projects</a>
+      <a href="/project_add" class="sidebar-link">➤ Add Projects</a>
+    </div>
+    
+    
+    <a href="/register_page" class="sidebar-link"><i class="bi bi-person-plus"></i> New User Register</a>
+    <a href="/invoice_main_page" class="sidebar-link"><i class="bi bi-receipt"></i> Invoice</a>
+    <a href="/user_information" class="sidebar-link"><i class="bi bi-person"></i> User Information</a>
+    <a href="/manager_page" class="sidebar-link"><i class="bi bi-people"></i> Manager with Employee</a>
+    <a href="/bulk_upload" class="sidebar-link"><i class="bi bi-upload"></i> Bulk Upload</a>
+    
+    <a href="#" class="sidebar-link"><i class="bi bi-file-earmark-bar-graph"></i> Reports</a>
+    <div class="submenu">
+      <a href="/employee_payment_report" class="sidebar-link">➤ Employee Payment</a>
+      <a href="/report" class="sidebar-link">➤ Site Report</a>
+    </div>
+    
+    
+    </div>
+    
+    
+        <!-- Navbar -->
+        <nav class="navbar">
+          <span class="menu-icon" onclick="toggleSidebar()"><i class="bi bi-list"></i></span>
+          <div class="nav-logo"><i class="bi bi-receipt"></i> Invoice</div>
+          <div class="nav-links">
+            <a href="javascript:void(0);" onclick="logout()"
+              ><i class="bi bi-box-arrow-right"></i> Log Out</a
+            >
+          </div>
+        </nav>
+    
+        <!-- Main Content -->
+        <div id="mainContent" class="content">
+        </br>
+
+    <div class="container mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Employee Information</h2>
+        <div class="button-container">
+          <button onclick="window.location.href='/invoice_main_page'">
+            <i class="bi bi-person"></i> Invoice
+          </button>
+        </div>
+      </div>
+
+      <table class="table table-striped" id="employeeTable">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Joining Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Employee data will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      class="modal fade"
+      id="otpValidationModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">OTP Verification</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="managerEmail"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="otpInput" class="form-label">Enter OTP</label>
+              <input
+                type="text"
+                class="form-control"
+                id="otpInput"
+                maxlength="6"
+                placeholder="6-digit OTP"
+              />
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <button type="button" class="btn btn-primary" id="sendOtpBtn">
+                Send OTP
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="resendOtpBtn"
+                disabled
+              >
+                Resend OTP
+              </button>
+            </div>
+
+            <div class="mt-3">
+              <div class="alert alert-warning" id="otpTimerAlert">
+                OTP will expire in <span id="otpTimer">05:00</span>
+              </div>
+            </div>
+
+            <input type="hidden" id="employeeId" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-success" id="verifyOtpBtn">
+              Verify OTP
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal for sensitive information -->
+    <div
+      class="modal fade"
+      id="sensitiveInfoModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Enter Password to View Sensitive Information
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="managerPassword" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="managerPassword"
+              />
+              <input type="hidden" id="employeeId" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="verifyPasswordBtn"
+            >
+              Verify
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for displaying sensitive information -->
+    <div
+      class="modal fade"
+      id="employeeDetailsModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sensitive Information</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>PAN Number:</strong> <span id="panNo"></span></p>
+                <p>
+                  <strong>Account Number:</strong> <span id="accountNo"></span>
+                </p>
+                <p><strong>Bank Name:</strong> <span id="bankName"></span></p>
+              </div>
+              <div class="col-md-6">
+                <p><strong>IFSC Code:</strong> <span id="ifscCode"></span></p>
+                <p>
+                  <strong>Monthly Salary:</strong>
+                  <span id="monthlySalary"></span>
+                </p>
+                <p>
+                  <strong>Food Allowance:</strong>
+                  <span id="foodAllowance"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/get_user_role")
+          .then((response) => response.json())
+          .then((data) => {
+            const userRole = data.role;
+    
+            if (userRole === 0) {
+              // Show only /invoice_main_page and /user_information
+              document.querySelectorAll(".sidebar-link").forEach((link) => {
+                const href = link.getAttribute("href");
+                if (href !== "/invoice_main_page" && href !== "/user_information") {
+                  link.style.display = "none";
+                }
+              });
+    
+              // Optionally hide all submenus
+              document.querySelectorAll(".submenu").forEach((submenu) => {
+                submenu.style.display = "none";
+              });
+            }
+          })
+          .catch((error) => console.error("Failed to fetch user role:", error));
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/user_information.js') }}"></script>
+  </body>
+</html>

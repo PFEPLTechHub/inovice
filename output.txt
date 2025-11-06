@@ -1,0 +1,158 @@
+2025-02-04 16:46:05.562935 - Error while processing template: Template file '../templates\temp1.xlsx' not found.
+2025-02-04 16:46:05.565211 - Error while processing template: Template file '../templates\temp2.xlsx' not found.
+2025-02-04 16:47:08.652063 - Error while processing template: Template file '../templates\temp1.xlsx' not found.
+2025-02-04 16:47:08.682105 - Error while processing template: Template file '../templates\temp2.xlsx' not found.
+2025-02-04 16:51:22.860663 - Error while processing template: Template file '../templates\temp1.xlsx' not found.
+2025-02-04 16:51:22.861754 - Error while processing template: Template file '../templates\temp2.xlsx' not found.
+2025-02-04 16:52:59.983857 - Error while processing template: Template file '/templates\temp1.xlsx' not found.
+2025-02-04 16:52:59.984930 - Error while processing template: Template file '/templates\temp2.xlsx' not found.
+2025-02-04 16:53:40.656928 - Error while processing template: Template file '/templates\temp1.xlsx' not found.
+2025-02-04 16:53:40.660240 - Error while processing template: Template file '/templates\temp2.xlsx' not found.
+2025-02-04 16:53:55.610385 - Error while processing template: Template file '/invoice_templates\temp1.xlsx' not found.
+2025-02-04 16:53:55.612171 - Error while processing template: Template file '/invoice_templates\temp2.xlsx' not found.
+2025-02-04 16:54:40.819330 - Error while processing template: Template file '00/invoice_templates\temp1.xlsx' not found.
+2025-02-04 16:54:40.822966 - Error while processing template: Template file '00/invoice_templates\temp2.xlsx' not found.
+2025-02-04 16:54:48.732153 - Error while processing template: Template file '00/invoice_templates\temp1.xlsx' not found.
+2025-02-04 16:54:48.733320 - Error while processing template: Template file '00/invoice_templates\temp2.xlsx' not found.
+2025-02-04 16:54:59.104095 - Error while processing template: Template file '../invoice_templates\temp1.xlsx' not found.
+2025-02-04 16:54:59.107491 - Error while processing template: Template file '../invoice_templates\temp2.xlsx' not found.
+2025-02-04 16:55:26.618175 - Error while processing template: Template file '..\invoice_templates\temp1.xlsx' not found.
+2025-02-04 16:55:26.621464 - Error while processing template: Template file '..\invoice_templates\temp2.xlsx' not found.
+2025-02-04 16:56:21.685531 - Error while processing template: Template file '..\invoice_templates\temp1.xlsx' not found.
+2025-02-04 16:56:21.687129 - Error while processing template: Template file '..\invoice_templates\temp2.xlsx' not found.
+2025-02-04 16:58:13.305071 - Error while processing template: Template file '../invoice_templates\temp1.xlsx' not found.
+2025-02-04 16:58:13.309911 - Error while processing template: Template file '../invoice_templates\temp2.xlsx' not found.
+2025-02-04 17:00:55.150593 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:00:55.184027 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:05:38.816310 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:05:38.838980 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:07:38.419289 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:07:38.452591 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:07:38.500520 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:07:38.531649 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:09:45.851861 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:09:45.874631 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:12:00.303241 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:12:00.324132 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:12:29.036350 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:12:29.061029 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:13:22.509269 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:13:22.533703 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:14:02.843778 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:14:02.864183 - Error while processing template: name 'invoice_date' is not defined
+2025-02-04 17:14:41.259794 - Error while processing template: 'str' object has no attribute 'toString'
+2025-02-04 17:14:41.279288 - Error while processing template: 'str' object has no attribute 'toString'
+2025-02-04 17:15:31.209949 - Error while processing template: 'str' object has no attribute 'toString'
+2025-02-04 17:15:31.238123 - Error while processing template: 'str' object has no attribute 'toString'
+2025-02-04 17:15:39.777423 - Error while processing template: 'str' object has no attribute 'toString'
+2025-02-04 17:15:39.797460 - Error while processing template: 'str' object has no attribute 'toString'
+2025-02-04 17:17:34.007289 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:17:34.030713 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:20:21.191251 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:20:21.211424 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:21:34.251506 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:21:34.279359 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:22:17.095359 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:22:17.096772 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:22:17.130385 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:22:17.180206 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:22:40.256742 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:22:40.278846 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:31:43.061559 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:31:43.082323 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:32:21.017433 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 17:32:21.046738 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 18:06:12.824701 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 18:06:12.858512 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 18:40:01.049499 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 18:40:01.084131 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 18:46:03.537677 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 18:46:03.570790 - Error while processing template: [<class 'decimal.ConversionSyntax'>]
+2025-02-04 18:54:22.451564 - Error while processing template: name 'get_project_address' is not defined
+2025-02-04 18:54:22.474872 - Error while processing template: name 'get_project_address' is not defined
+2025-02-04 19:01:43.767670 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-04 19:03:40.256625 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-04 19:04:20.952787 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-04 19:44:04.769429 - Error while processing template: name 'update_db' is not defined
+2025-02-04 19:44:04.827530 - Error while processing template: name 'update_db' is not defined
+2025-02-04 19:44:17.056155 - Error while processing template: name 'update_db' is not defined
+2025-02-04 19:44:17.115215 - Error while processing template: name 'update_db' is not defined
+2025-02-04 19:52:07.771049 - Error while processing template: Entity namespace for "contract_user_info" has no property "isactive"
+2025-02-04 19:52:07.828422 - Error while processing template: Entity namespace for "contract_user_info" has no property "isactive"
+2025-02-05 10:03:29.627467 - Error while processing template: (pymysql.err.OperationalError) (1525, "Incorrect DATE value: '2025-02'")
+[SQL: SELECT history_table.historytable_uid AS history_table_historytable_uid, history_table.last_invoice_number AS history_table_last_invoice_number, history_table.month_date AS history_table_month_date, history_table.contract_employee_uid AS history_table_contract_employee_uid, history_table.historytable_isactive AS history_table_historytable_isactive 
+FROM history_table 
+WHERE history_table.contract_employee_uid = %(contract_employee_uid_1)s AND history_table.month_date = %(month_date_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'contract_employee_uid_1': 1, 'month_date_1': '2025-02', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-05 10:03:29.683288 - Error while processing template: (pymysql.err.OperationalError) (1525, "Incorrect DATE value: '2025-02'")
+[SQL: SELECT history_table.historytable_uid AS history_table_historytable_uid, history_table.last_invoice_number AS history_table_last_invoice_number, history_table.month_date AS history_table_month_date, history_table.contract_employee_uid AS history_table_contract_employee_uid, history_table.historytable_isactive AS history_table_historytable_isactive 
+FROM history_table 
+WHERE history_table.contract_employee_uid = %(contract_employee_uid_1)s AND history_table.month_date = %(month_date_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'contract_employee_uid_1': 2, 'month_date_1': '2025-02', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-05 10:07:37.037203 - Error while processing template: 'invoice_no' is an invalid keyword argument for history_table
+2025-02-05 10:07:37.130174 - Error while processing template: 'invoice_no' is an invalid keyword argument for history_table
+2025-02-05 10:08:30.920722 - Error while processing template: 'invoice_no' is an invalid keyword argument for history_table
+2025-02-05 10:08:30.985683 - Error while processing template: 'invoice_no' is an invalid keyword argument for history_table
+2025-02-05 10:09:01.430929 - Error while processing template: 'invoice_no' is an invalid keyword argument for history_table
+2025-02-05 10:09:01.501759 - Error while processing template: 'invoice_no' is an invalid keyword argument for history_table
+2025-02-05 10:15:43.880905 - Error while processing template: Unconsumed column names: last_invoice_no
+2025-02-05 10:15:43.967978 - Error while processing template: Unconsumed column names: last_invoice_no
+2025-02-05 10:15:43.997210 - Error while processing template: Unconsumed column names: last_invoice_no
+2025-02-05 10:15:44.057985 - Error while processing template: Unconsumed column names: last_invoice_no
+2025-02-13 12:42:11.109733 - Error while processing template: [Errno 13] Permission denied: 'output\\2025-02-28\\invoice_Fahad.xlsx'
+2025-02-13 12:42:11.205969 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-13 12:45:11.896910 - Error while processing template: [Errno 13] Permission denied: 'output\\2025-02-28\\invoice_Fahad.xlsx'
+2025-02-13 12:45:11.999429 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-13 12:47:45.286209 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-13 12:49:59.340948 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-13 12:49:59.366377 - Error while processing template: [Errno 13] Permission denied: 'output\\2025-02-28\\invoice_John.xlsx'
+2025-02-13 12:53:39.665945 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-13 12:55:49.341899 - Error while processing template: 'NoneType' object has no attribute 'project_name'
+2025-02-24 15:48:12.966814 - Error while processing template: 'amount_in_words'
+2025-02-24 15:48:35.111352 - Error while processing template: 'amount_in_words'
+2025-02-24 15:51:12.780217 - Error while processing template: 'amount_in_words'
+2025-02-24 15:54:01.630276 - Error while processing template: 'Amount_in_words'
+2025-02-24 15:55:08.049819 - Error while processing template: 'amount_in_words'
+2025-02-24 15:56:33.366504 - Error while processing template: 'amount_in_words'
+2025-02-24 16:04:39.643554 - Error while processing template: get_projects() takes 0 positional arguments but 2 were given
+2025-02-26 12:11:56.868770 - Error while processing template: 'Food_Days'
+2025-02-28 15:56:30.532111 - Error while processing template: 'Arrears_Month'
+2025-03-29 10:45:25.214859 - Error while processing template: cannot access local variable 'placeholder_text' where it is not associated with a value
+2025-03-29 10:45:25.241702 - Error while processing template: cannot access local variable 'placeholder_text' where it is not associated with a value
+2025-03-29 10:45:49.739302 - Error while processing template: cannot access local variable 'placeholder_text' where it is not associated with a value
+2025-03-29 10:45:49.764364 - Error while processing template: cannot access local variable 'placeholder_text' where it is not associated with a value
+2025-03-29 11:12:17.308712 - Error while processing template: string indices must be integers, not 'str'
+2025-03-29 13:23:35.429371 - Error while processing template: 'str' object has no attribute 'date_obj'
+2025-03-29 13:45:24.238494 - Error while processing template: 'str' object has no attribute 'strftime'
+2025-03-29 13:45:53.005165 - Error while processing template: 'str' object has no attribute 'strftime'
+2025-05-05 11:09:59.379398 - Error while processing template: 'total_amount_in_words'
+2025-05-05 11:12:04.271288 - Error while processing template: could not convert string to float: '11,177'
+2025-05-05 11:12:23.672873 - Error while processing template: could not convert string to float: '11,177'
+2025-05-17 15:20:27.185015 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:20:27.244975 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:20:27.315402 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:20:27.365866 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:20:27.430806 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:21:11.872261 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:21:11.930830 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:21:12.000275 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:21:12.050844 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:21:12.115862 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:21:42.503932 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:21:42.558993 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:22:34.722099 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:22:34.789082 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:23:48.372696 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:23:48.430700 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:25:41.496841 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:25:41.555851 - Error while processing template: update_invoice_no() takes 3 positional arguments but 4 were given
+2025-05-17 15:27:27.322054 - Error while processing template: 'location_irregular' is an invalid keyword argument for history_log
+2025-05-17 15:27:27.400274 - Error while processing template: 'location_irregular' is an invalid keyword argument for history_log
+2025-05-27 10:41:53.256811 - Error while processing template: 'int' object has no attribute 'replace'
+2025-05-27 10:41:53.288277 - Error while processing template: 'int' object has no attribute 'replace'
+2025-05-27 10:43:44.877398 - Error while processing template: 'int' object has no attribute 'replace'
+2025-05-27 10:43:44.910414 - Error while processing template: 'int' object has no attribute 'replace'

@@ -1,0 +1,390 @@
+/* Minimalist Grey Color Palette */
+:root {
+  --primary-color: #6c757d; /* Medium Grey */
+  --background-color: #f8f9fa; /* Light Grey */
+  --text-color: #343a40; /* Dark Grey */
+  --form-background: #ffffff; /* White */
+  --border-color: #ced4da; /* Soft Grey */
+  --hover-color: #495057; /* Darker Grey */
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+  font-size: 12px;
+}
+  
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 10px;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+  color: var(--hover-color);
+}
+
+/* Form Styles */
+form {
+  max-width: 1200px;
+  margin: 20px auto;
+  background: var(--form-background);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+/* Table Styles */
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+#invoiceTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--form-background);
+}
+
+#invoiceTable th,
+#invoiceTable td {
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+#invoiceTable th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.odd-row {
+  background-color: #e9ecef; /* Lighter Grey */
+}
+
+/* Toast Notifications */
+#toastContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+#toastContainers {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  #invoiceTable th,
+  #invoiceTable td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.input-container label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.input-container input[type="month"] {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.input-container button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 20px; /* Increased padding */
+  width: 150px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px; /* Slightly bigger font */
+}
+
+.input-container button:hover {
+  background-color: var(--hover-color);
+}
+i {
+  margin-right: 8px;
+}
+.submit-container button {
+  display: flex;
+  align-items: center;
+}
+
+/* Adjust for smaller screen sizes (e.g., mobile) */
+@media (max-width: 768px) {
+  .submit-container button {
+    margin-left: 0px; /* Adjust margin for mobile to keep it inside the screen */
+  }
+}
+
+/* Reduce the width of specific columns */
+#invoiceTable th:nth-child(3), /* Invoice No */
+#invoiceTable td:nth-child(3),
+#invoiceTable th:nth-child(4), /* Payable Days */
+#invoiceTable td:nth-child(4),
+#invoiceTable td:nth-child(5) {
+  width: 8px !important; /* Adjust this width value as needed */
+}
+
+#invoiceTable input[type="text"],
+#invoiceTable input[type="number"],
+#invoiceTable input[type="month"] {
+  width: 100px; /* Adjust this value as needed */
+  height: 20px;
+  padding: 5px;
+  font-size: 12px; /* Adjust font size */
+}
+
+#invoiceTable label {
+  font-size: 12px; /* Adjust font size for labels */
+  padding: 5px;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+/* Button Styles */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.arrears {
+  display: none;
+  opacity: 0;
+  width: 0;
+  transition: opacity 0.3s, width 0.3s;
+}
+/* Add this to your invoice_main_page.css file */
+
+#toastContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.toast {
+  padding: 12px 20px;
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  min-width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast.success {
+  background-color: #4CAF50;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+.toast.info {
+  background-color: #2196F3;
+}
+
+.toast.warning {
+  background-color: #ff9800;
+}
+
+/* Style for the project dropdown */
+#invoiceTable td#project select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#invoiceTable td#project select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Add these styles to your invoice_main_page.css file */
+
+.edit-button, .save-button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.edit-button {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #43a047;
+}
+
+.edit-button:hover {
+  background-color: #388e3c;
+}
+
+.save-button {
+  background-color: #2196F3;
+  color: white;
+  border: 1px solid #1e88e5;
+}
+
+.save-button:hover {
+  background-color: #1976d2;
+}
+
+.edit-button i, .save-button i {
+  font-size: 16px;
+}
+
+/* Add a visual indicator for edit mode */
+.row-being-edited td {
+  background-color: #f8f9fa;
+}
+
+/* Add styles for focused inputs to indicate they're being edited */
+input:focus, select:focus {
+  outline: 2px solid #2196F3;
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+}
+
+.disabled-row {
+  background-color: #f5f5f5;
+  color: #888;
+  opacity: 0.8;
+}
+
+.disabled-row input, 
+.disabled-row select {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+.admin-automation-panel {
+  display: none; /* Hidden by default, shown only for admin users */
+  margin: 15px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #0d6efd;
+}
+
+#automateDataBtn {
+  display: flex;
+  align-items: center;
+}
+
+#automateDataBtn i {
+  margin-right: 8px;
+}
+
+/* Modal toggle switch styling */
+.form-switch .form-check-input {
+  width: 3em; /* Larger toggle switch */
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Modal confirmation message */
+.automation-status {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #e8f4fc;
+}
+
+.automation-status.enabled {
+  background-color: #d1e7dd;
+  color: #146c43;
+}
+
+.automation-status i {
+  margin-right: 10px;
+  font-size: 1.2em;
+}

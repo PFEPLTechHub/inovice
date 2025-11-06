@@ -1,0 +1,128 @@
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40; /* Dark grey background */
+  padding: 15px 30px;
+  color: white;
+  border-radius: 10px;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Form Styling */
+.form-container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  color: black; /* Grey color for labels */
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc; /* Light grey border */
+  margin-top: 5px;
+  background-color: #f8f9fa; /* Light grey background for inputs */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+  padding: 12px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: rgb(4, 108, 4); /* Blue-grey background */
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  input,
+  select {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Body styles */
+body {
+  padding: 10px; /* Add padding to body to ensure content is not touching the edges */
+  background-color: #f8f9fa; /* Light grey background */
+  font-family: "Poppins", sans-serif;
+}
+i {
+  margin-right: 8px; /* Adjust the gap as needed */
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #6c757d; /* Grey background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}

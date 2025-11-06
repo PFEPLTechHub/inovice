@@ -1,0 +1,168 @@
+:root {
+  --primary-color: #6c757d; /* Medium Grey */
+  --background-color: #f8f9fa; /* Light Grey */
+  --text-color: #343a40; /* Dark Grey */
+  --form-background: #ffffff; /* White */
+  --border-color: #ced4da; /* Soft Grey */
+  --hover-color: #495057; /* Darker Grey */
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.manager-card {
+  border-left: 6px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+
+.manager-card:hover {
+  transform: scale(1.02);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #343a40, #343a40);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: none;
+}
+
+.employee-count {
+  background: white;
+  color: #343a40;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 50px;
+}
+
+.card-body {
+  background: white;
+  padding: 20px;
+}
+
+.table-responsive {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table thead {
+  background: #343a40;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.table tbody tr:hover {
+  background: #f1f1f1;
+  transition: 0.3s;
+}
+
+.employee-row {
+  transition: all 0.3s ease;
+}
+
+.employee-row:hover {
+  background-color: #e9ecef;
+  transform: translateX(5px);
+}
+
+.empty-message {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.alert {
+  border-radius: 10px;
+  padding: 15px;
+}
+
+body {
+  
+  font-family: "Arial", sans-serif;
+}
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.button-container button {
+  background-color: var(--primary-color);
+    color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.button-container button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #343a40, #343a40);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40;
+  padding: 15px 30px;
+  color: white;
+  border-radius: 10px;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+button{
+background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 5px;
+    transition: 0.3s;
+}
